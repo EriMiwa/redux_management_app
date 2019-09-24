@@ -1,6 +1,7 @@
 export const GET_LISTS = 'GET_LISTS';
 export const ADD_LIST = 'ADD_LIST';
 export const CLICK_LIST = 'CLICK_LIST';
+export const DELETE_LIST = 'DELETE_LIST';
 
 export function getLists(payload) {
   return function(dispatch) {
@@ -29,4 +30,13 @@ export function clickList(id) {
       payload: id,
     })
   }
+}
+
+export function deleteList(id) {
+    return function(dispatch) {
+      dispatch({
+        type: DELETE_LIST,
+        payload: id,
+      })
+    }
 }

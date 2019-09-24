@@ -1,10 +1,10 @@
-import { GET_LISTS, CLICK_LIST, ADD_LIST } from '../actions/lists'
+import { GET_LISTS, CLICK_LIST, ADD_LIST, DELETE_LIST } from '../actions/lists'
 
 const initialState = {
   lists: [
-    {id: '1', title: 'Squirtle Laid an Egg', state: 'open', url: 'https://api.github.com/', createdDate: '2019-09-19T18:06:03Z', updatedDate:'2019-09-19T18:06:03Z'},
-    {id: '2', title: 'Squirtle Laid an Egg', state: 'open', url: 'https://api.github.com/', createdDate: '2019-09-19T18:06:03Z', updatedDate:'2019-09-19T18:06:03Z'},
-    {id: '3', title: 'Squirtle Laid an Egg', state: 'open', url: 'https://api.github.com/', createdDate: '2019-09-19T18:06:03Z', updatedDate:'2019-09-19T18:06:03Z'}
+    {id: '1', title: 'Squirtle Laid an Egg', state: 'open', url: 'https://api.github.com/repos/angular/angular/issues/32820', createdDate: '2019-09-19T18:06:03Z', updatedDate:'2019-09-19T18:06:03Z'},
+    {id: '2', title: 'Squirtle Laid an Egg', state: 'open', url: 'https://api.github.com/repos/angular/angular/issues/32820', createdDate: '2019-09-19T18:06:03Z', updatedDate:'2019-09-19T18:06:03Z'},
+    {id: '3', title: 'Squirtle Laid an Egg', state: 'open', url: 'https://api.github.com/repos/angular/angular/issues/32820', createdDate: '2019-09-19T18:06:03Z', updatedDate:'2019-09-19T18:06:03Z'}
   ]
 }
 
@@ -16,6 +16,8 @@ export default function lists(state = initialState, action) {
       return addLists(state, action);
     case CLICK_LIST:
       return clickList(state, action);
+    case DELETE_LIST:
+      return deleteList(state, action);
     default:
       return state;
   }
@@ -48,6 +50,18 @@ function clickList(state, action) {
     ...currentLists[id],
     isCompleted: !currentLists[id].isCompleted
   }
+
+  return {
+    ...state,
+    lists: currentLists,
+  }
+}
+
+function deleteList(state, action) {
+  const id = action.payload;
+  let currentLists = state.lists.filter(list => {
+    return list.id !== id;
+  });
 
   return {
     ...state,

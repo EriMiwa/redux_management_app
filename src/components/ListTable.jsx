@@ -5,19 +5,19 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 import DeleteDialog from "./DeleteDialog";
 import AddDialog from './AddDialog';
 import EditDialog from './EditDialog';
 
-class ListTable extends React.Component {
+export default class ListTable extends React.Component {
     state = {
         open: false
     }
 
     render() {
 
-        const { onClickList, issueLists } = this.props;
+        const { onClickList, issueLists, onDeleteList } = this.props;
         const { open } = this.state;
 
         return (
@@ -52,8 +52,8 @@ class ListTable extends React.Component {
                                 <TableCell>{list.createdDate}</TableCell>
                                 <TableCell>{list.updatedDate}</TableCell>
                                 <TableCell>
-                                    <EditDialog open={open} />
-                                    <DeleteDialog open={open} />
+                                    <EditDialog open={open} list={list}/>
+                                    <DeleteDialog open={open} onDeleteList={onDeleteList} list={list} id={list.id}/>
                                 </TableCell>
                                 </TableRow>
                             ))
@@ -65,10 +65,10 @@ class ListTable extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => {
-    return {
-        lists: state.lists
-    }
-}
+// const mapStateToProps = (state) => {
+//     return {
+//         lists: state.lists
+//     }
+// }
 
-export default connect(mapStateToProps)(ListTable);
+// export default connect(mapStateToProps)(ListTable);

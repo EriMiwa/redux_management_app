@@ -22,27 +22,33 @@ const useStyles = makeStyles(theme => ({
 }));
 
 function Navbar () {
-    const classes = useStyles();
-    return (
-      <AppBar position="static" className={classes.appBar}>
-        <Toolbar>
-          <Typography variant="h6" className={classes.title}>
-            <strong>Angular 6 MatTable CRUD Example</strong>
-          </Typography>
-          <Typography variant="h6">
-            <strong>Reload data:
-              <IconButton 
-                className={classes.button}
-                aria-label="refresh"
-              >
-                <RefreshIcon />
-              </IconButton>
-              </strong>
-          </Typography>
-        </Toolbar>
-    </AppBar>
-    );
+  const classes = useStyles();
 
+  const handleClickReload = () => {
+    window.location.reload();
+    console.log("refreshed!!")
+  }
+
+  return (
+    <AppBar position="static" className={classes.appBar}>
+      <Toolbar>
+        <Typography variant="h6" className={classes.title}>
+          <strong>Angular 6 MatTable CRUD Example</strong>
+        </Typography>
+        <Typography variant="h6">
+          <strong>Reload data:
+            <IconButton 
+              className={classes.button}
+              aria-label="refresh"
+              onClick={handleClickReload}
+            >
+              <RefreshIcon />
+            </IconButton>
+            </strong>
+        </Typography>
+      </Toolbar>
+  </AppBar>
+  );
 }
 
 export default Navbar;

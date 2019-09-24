@@ -5,7 +5,6 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-// import { connect } from 'react-redux';
 import DeleteDialog from "./DeleteDialog";
 import AddDialog from './AddDialog';
 import EditDialog from './EditDialog';
@@ -17,7 +16,7 @@ export default class ListTable extends React.Component {
 
     render() {
 
-        const { onClickList, issueLists, onDeleteList } = this.props;
+        const { onEditList, issueLists, onDeleteList } = this.props;
         const { open } = this.state;
 
         return (
@@ -52,7 +51,7 @@ export default class ListTable extends React.Component {
                                 <TableCell>{list.createdDate}</TableCell>
                                 <TableCell>{list.updatedDate}</TableCell>
                                 <TableCell>
-                                    <EditDialog open={open} list={list}/>
+                                    <EditDialog open={open} onEditList={onEditList} list={list}/>
                                     <DeleteDialog open={open} onDeleteList={onDeleteList} list={list} id={list.id}/>
                                 </TableCell>
                                 </TableRow>

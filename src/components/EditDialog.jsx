@@ -18,7 +18,7 @@ export default class EditDialog extends React.Component{
     render() {
 
         const { open } = this.state;
-        const { list } = this.props;
+        const { list, onEditList } = this.props;
 
 
         const handleClickOpen = () => {

@@ -1,11 +1,12 @@
-import { GET_LISTS, CLICK_LIST, ADD_LIST, DELETE_LIST } from '../actions/lists'
+import { GET_LISTS, EDIT_LIST, ADD_LIST, DELETE_LIST } from '../actions/lists'
 
 const initialState = {
   lists: [
-    {id: '1', title: 'Squirtle Laid an Egg', state: 'open', url: 'https://api.github.com/repos/angular/angular/issues/32820', createdDate: '2019-09-19T18:06:03Z', updatedDate:'2019-09-19T18:06:03Z'},
-    {id: '2', title: 'Squirtle Laid an Egg', state: 'open', url: 'https://api.github.com/repos/angular/angular/issues/32820', createdDate: '2019-09-19T18:06:03Z', updatedDate:'2019-09-19T18:06:03Z'},
-    {id: '3', title: 'Squirtle Laid an Egg', state: 'open', url: 'https://api.github.com/repos/angular/angular/issues/32820', createdDate: '2019-09-19T18:06:03Z', updatedDate:'2019-09-19T18:06:03Z'}
-  ]
+    {id: '11111', title: 'title1', state: 'open', url: 'https://api.github.com/repos/angular/angular/issues/32820', createdDate: '2019-09-19T18:06:03Z', updatedDate:'2019-09-19T18:06:03Z'},
+    {id: '22222', title: 'title2', state: 'open', url: 'https://api.github.com/repos/angular/angular/issues/32820', createdDate: '2019-09-19T18:06:03Z', updatedDate:'2019-09-19T18:06:03Z'},
+    {id: '33333', title: 'title3', state: 'open', url: 'https://api.github.com/repos/angular/angular/issues/32820', createdDate: '2019-09-19T18:06:03Z', updatedDate:'2019-09-19T18:06:03Z'}
+  ],
+  list:{}
 }
 
 export default function lists(state = initialState, action) {
@@ -14,8 +15,8 @@ export default function lists(state = initialState, action) {
       return getLists(state, action);
     case ADD_LIST:
       return addLists(state, action);
-    case CLICK_LIST:
-      return clickList(state, action);
+    case EDIT_LIST:
+      return editList(state, action);
     case DELETE_LIST:
       return deleteList(state, action);
     default:
@@ -26,35 +27,19 @@ export default function lists(state = initialState, action) {
 function getLists(state, action) {
   return {
     ...state,
+    lists: action.payload
   }
 }
 
 function addLists(state, action) {
   return {
     ...state,
-    lists: [
-      ...state.lists,
-      {
-        text: action.payload,
-        isCompleted: false,
-      }
-    ]
+    list: action.payload
   }
 }
 
-function clickList(state, action) {
-  const id = action.payload;
-  let currentLists = state.lists;
+function editList(state, action) {
 
-  currentLists[id] = {
-    ...currentLists[id],
-    isCompleted: !currentLists[id].isCompleted
-  }
-
-  return {
-    ...state,
-    lists: currentLists,
-  }
 }
 
 function deleteList(state, action) {

@@ -2,15 +2,15 @@ import React from 'react';
 import Page from '../components/Page';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { getLists, addList, clickList, deleteList} from '../actions/lists'
+import { getLists, addList, editList, deleteList} from '../actions/lists'
 
 class Container extends React.Component {
   render() {
-    const { lists, clickList, addList, getLists, deleteList } = this.props;
+    const { lists, editList, addList, getLists, deleteList } = this.props;
     return (
       <Page
         lists={lists}
-        clickList={clickList}
+        editList={editList}
         addList={addList}
         deleteList={deleteList}
       />
@@ -30,7 +30,7 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({
     getLists,
     addList,
-    clickList,
+    editList,
     deleteList,
   }, dispatch)
 }

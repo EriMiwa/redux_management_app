@@ -1,6 +1,6 @@
 export const GET_LISTS = 'GET_LISTS';
 export const ADD_LIST = 'ADD_LIST';
-export const CLICK_LIST = 'CLICK_LIST';
+export const EDIT_LIST = 'EDIT_LIST';
 export const DELETE_LIST = 'DELETE_LIST';
 
 export function getLists(payload) {
@@ -12,21 +12,19 @@ export function getLists(payload) {
   }
 }
 
-//payload = a newly added todo
-export function addList(text) {
+export function addList(newPost) {
   return function(dispatch) {
     dispatch({
       type: ADD_LIST,
-      payload: text,
+      payload: newPost,
     })
   }
 }
 
-//payload = id = number
-export function clickList(id) {
+export function editList(id) {
   return function(dispatch) {
     dispatch({
-      type: CLICK_LIST,
+      type: EDIT_LIST,
       payload: id,
     })
   }

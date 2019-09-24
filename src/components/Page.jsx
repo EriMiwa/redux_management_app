@@ -6,16 +6,16 @@ import ListTable from './ListTable';
 class Page extends React.Component {
 
     render() {
-        const { addList, clickList, deleteList, lists } = this.props;
+        const { addList, editList, deleteList, lists } = this.props;
         return (
             <div>
                 <Navbar/>
                 <ListTable
                     issueLists={lists}
-                    onClickList={clickList}
                     onDeleteList={deleteList}
+                    onEditList={editList}
+                    onAddList={addList}
                 />
-                {/* <AddDialog handleInputValue={addList}/> */}
             </div>
         );
     }

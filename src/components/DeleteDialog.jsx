@@ -29,9 +29,9 @@ export default class DeleteDialog extends React.Component{
         };
     
         const handleDelete = (id) => {
-            onDeleteList(id)
-            // this.window.forceUpdate();
-            console.log('deleted', list.id)
+            onDeleteList(id);
+            console.log('deleted', list.id);
+            // getLists();
             this.setState({open: false})
         }
 

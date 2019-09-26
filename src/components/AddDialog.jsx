@@ -11,26 +11,88 @@ import AddIcon from "@material-ui/icons/Add";
 export default class AddDialog extends React.Component {
     state = {
         open: false,
-        value: "",
+        idValue: "",
+        titleValue: "",
+        stateValue: "",
+        urlValue: "",
+        createdDateValue: "",
+        updatedDateValue: ""
     }
 
 
     render() {
-        const { open, id, title, state, url, createdDate, updatedDate } = this.state;
-        const {  } = this.props;
+        const { open, idValue, titleValue, stateValue, urlValue, createdDateValue, updatedDateValue } = this.state;
 
-        const handleClickOpen = () => {
+        //handler for opening/closing dialog
+        const handleClickOpen = (e) => {
             this.setState({
                 open: true
             })
         };
     
-        const handleClickClose = () => {
+        const handleClickClose = (e) => {
             this.setState({
                 open: false
             })
         };
-    
+
+        //handler for dialog form input
+        //ID
+        const handleIdInputValue = (e) => {
+            this.setState({idValue: e.target.value});
+            console.log(idValue);
+        } 
+        //Title
+        const handleTitleInputValue = (e) => {
+            this.setState({titleValue: e.target.value});
+            console.log(titleValue);
+        }
+        //state
+        const handleStateInputValue = (e) => {
+            this.setState({stateValue: e.target.value});
+            console.log(stateValue);
+        }
+        //URL
+        const handleUrlInputValue = (e) => {
+            this.setState({urlValue: e.target.value});
+            console.log(urlValue);
+        }
+        //created date
+        const handleCreatedDateInputValue = (e) => {
+            this.setState({createdDateValue: e.target.value});
+            console.log(createdDateValue);
+        }
+        //updated date
+        const handleUpdateDateInputValue = (e) => {
+            this.setState({updatedDateValue: e.target.value});
+            console.log(updatedDateValue);
+        }
+
+        const handleAddList = (e) => {
+            e.preventDefault();
+            const newIssue = {
+                id: this.state.idValue,
+                title: this.state.titleValue,
+                state: this.state.stateValue,
+                url: this.state.urlValue,
+                createdDate: this.state.createdDateValue,
+                updatedDate: this.state.updatedDateValue
+            }
+
+            this.props.handleInputValue(newIssue);
+            this.setState({
+                idValue: "",
+                titleValue: "",
+                stateValue: "",
+                urlValue: "",
+                createdDateValue: "",
+                updatedDateValue: ""
+            })
+
+            handleClickClose();
+        }
+
+
         return (
             <div>
                 <IconButton
@@ -50,7 +112,8 @@ export default class AddDialog extends React.Component {
                         label="Id"
                         type="text"
                         fullWidth
-                        onChange={this.upDateIdInputValue}
+                        value={this.state.idValue}
+                        onChange={handleIdInputValue}
                     />
                     <TextField
                         autoFocus
@@ -59,6 +122,8 @@ export default class AddDialog extends React.Component {
                         label="Title"
                         type="text"
                         fullWidth
+                        value={this.state.titleValue}
+                        onChange={handleTitleInputValue}
                     />
                     <TextField
                         autoFocus
@@ -67,6 +132,8 @@ export default class AddDialog extends React.Component {
                         label="State"
                         type="text"
                         fullWidth
+                        value={this.state.stateValue}
+                        onChange={handleStateInputValue}
                     />
                     <TextField
                         autoFocus
@@ -75,6 +142,8 @@ export default class AddDialog extends React.Component {
                         label="Url"
                         type="text"
                         fullWidth
+                        value={this.state.urlValue}
+                        onChange={handleUrlInputValue}
                     />
                     <TextField
                         autoFocus
@@ -83,6 +152,8 @@ export default class AddDialog extends React.Component {
                         label="Created at"
                         type="text"
                         fullWidth
+                        value={this.state.createdDateValue}
+                        onChange={handleCreatedDateInputValue}
                     />
                     <TextField
                         autoFocus
@@ -91,15 +162,15 @@ export default class AddDialog extends React.Component {
                         label="Updated at"
                         type="text"
                         fullWidth
-                        value={this.state.inputValue}
-                        onChange={this.upDateInputValue}
+                        value={this.state.updateDateValue}
+                        onChange={handleUpdateDateInputValue}
                     />
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClickClose} color="primary">
                     Cancel
                     </Button>
-                    <Button onClick={handleClickClose} color="primary">
+                    <Button onClick={handleAddList} color="primary">
                     Save
                     </Button>
                 </DialogActions>

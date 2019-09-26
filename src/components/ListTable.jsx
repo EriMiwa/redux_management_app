@@ -10,12 +10,12 @@ import AddDialog from './AddDialog';
 import EditDialog from './EditDialog';
 
 export default class ListTable extends React.Component {
+
     state = {
         open: false
     }
 
     render() {
-
         const { onEditList, issueLists, onDeleteList } = this.props;
         const { open } = this.state;
 
@@ -31,7 +31,7 @@ export default class ListTable extends React.Component {
                             <TableCell>Created at</TableCell>
                             <TableCell>Updated at</TableCell>
                             <TableCell>
-                                <AddDialog open={open} />
+                                <AddDialog open={open} handleInputValue={this.props.onAddList}/>
                             </TableCell>
                         </TableRow>
                     </TableHead>
@@ -39,21 +39,21 @@ export default class ListTable extends React.Component {
                         {
                             issueLists.map(list => (
                                 <TableRow key={list.id}>
-                                <TableCell 
-                                    component="th" 
-                                    scope="row"
-                                >
-                                    {list.id}
-                                </TableCell>
-                                <TableCell>{list.title}</TableCell>
-                                <TableCell>{list.state}</TableCell>
-                                <TableCell>{list.url}</TableCell>
-                                <TableCell>{list.createdDate}</TableCell>
-                                <TableCell>{list.updatedDate}</TableCell>
-                                <TableCell>
-                                    <EditDialog open={open} onEditList={onEditList} list={list}/>
-                                    <DeleteDialog open={open} onDeleteList={onDeleteList} list={list} id={list.id}/>
-                                </TableCell>
+                                    <TableCell 
+                                        component="th" 
+                                        scope="row"
+                                    >
+                                        {list.id}
+                                    </TableCell>
+                                    <TableCell>{list.title}</TableCell>
+                                    <TableCell>{list.state}</TableCell>
+                                    <TableCell>{list.url}</TableCell>
+                                    <TableCell>{list.createdDate}</TableCell>
+                                    <TableCell>{list.updatedDate}</TableCell>
+                                    <TableCell>
+                                        <EditDialog open={open} onEditList={onEditList} list={list}/>
+                                        <DeleteDialog open={open} onDeleteList={onDeleteList} list={list} id={list.id}/>
+                                    </TableCell>
                                 </TableRow>
                             ))
                         }

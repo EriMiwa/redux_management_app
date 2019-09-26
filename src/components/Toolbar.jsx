@@ -12,7 +12,6 @@ const useStyles = makeStyles(theme => ({
   appBar: {
     backgroundColor: "#3f51b5"
   },
-
   title: {
     flexGrow: 1
   },
@@ -33,7 +32,7 @@ function Navbar () {
     <AppBar position="static" className={classes.appBar}>
       <Toolbar>
         <Typography variant="h6" className={classes.title}>
-          <strong>Angular 6 MatTable CRUD Example</strong>
+          <strong>React Redux Example</strong>
         </Typography>
         <Typography variant="h6">
           <strong>Reload data:

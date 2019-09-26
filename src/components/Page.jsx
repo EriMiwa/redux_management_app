@@ -1,7 +1,6 @@
 import React from 'react';
 import Navbar from './Toolbar'
 import ListTable from './ListTable';
-// import AddDialog from './components/AddDialog';
 
 class Page extends React.Component {
 

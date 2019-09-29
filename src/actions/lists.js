@@ -21,11 +21,11 @@ export function addList(newPost) {
   }
 }
 
-export function editList(id) {
+export function editList(editedPost,id) {
   return function(dispatch) {
     dispatch({
       type: EDIT_LIST,
-      payload: id,
+      payload: { editedPost, id }
     })
   }
 }

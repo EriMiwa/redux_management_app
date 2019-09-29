@@ -52,7 +52,7 @@ export default class ListTable extends React.Component {
                                     <TableCell>{list.updatedDate}</TableCell>
                                     <TableCell>
                                         <EditDialog open={open} onEditList={onEditList} list={list}/>
-                                        <DeleteDialog open={open} onDeleteList={onDeleteList} list={list} id={list.id}/>
+                                        <DeleteDialog open={open} onDeleteList={onDeleteList} list={list}/>
                                     </TableCell>
                                 </TableRow>
                             ))
@@ -63,11 +63,3 @@ export default class ListTable extends React.Component {
         );
     }
 }
-
-// const mapStateToProps = (state) => {
-//     return {
-//         lists: state.lists
-//     }
-// }
-
-// export default connect(mapStateToProps)(ListTable);

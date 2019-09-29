@@ -19,18 +19,17 @@ export default class AddDialog extends React.Component {
         updatedDateValue: ""
     }
 
-
     render() {
-        const { open, idValue, titleValue, stateValue, urlValue, createdDateValue, updatedDateValue } = this.state;
+        const { open } = this.state;
 
         //handler for opening/closing dialog
-        const handleClickOpen = (e) => {
+        const handleClickOpen = () => {
             this.setState({
                 open: true
             })
         };
     
-        const handleClickClose = (e) => {
+        const handleClickClose = () => {
             this.setState({
                 open: false
             })
@@ -40,32 +39,26 @@ export default class AddDialog extends React.Component {
         //ID
         const handleIdInputValue = (e) => {
             this.setState({idValue: e.target.value});
-            console.log(idValue);
         } 
         //Title
         const handleTitleInputValue = (e) => {
             this.setState({titleValue: e.target.value});
-            console.log(titleValue);
         }
         //state
         const handleStateInputValue = (e) => {
             this.setState({stateValue: e.target.value});
-            console.log(stateValue);
         }
         //URL
         const handleUrlInputValue = (e) => {
             this.setState({urlValue: e.target.value});
-            console.log(urlValue);
         }
         //created date
         const handleCreatedDateInputValue = (e) => {
             this.setState({createdDateValue: e.target.value});
-            console.log(createdDateValue);
         }
         //updated date
         const handleUpdateDateInputValue = (e) => {
             this.setState({updatedDateValue: e.target.value});
-            console.log(updatedDateValue);
         }
 
         const handleAddList = (e) => {
@@ -80,6 +73,7 @@ export default class AddDialog extends React.Component {
             }
 
             this.props.handleInputValue(newIssue);
+
             this.setState({
                 idValue: "",
                 titleValue: "",

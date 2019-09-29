@@ -41,18 +41,29 @@ function addLists(state, action) {
 }
 
 function editList(state, action) {
+  const editedDataId = action.payload.id;
+  const editedData = action.payload.editedPost;
+  const targetIndex = state.lists.findIndex((list) => {
+    return list.id === editedDataId
+  });
+  let currentLists = state.lists;
+  currentLists[targetIndex] = editedData;
 
+  return {
+    ...state,
+    lists: currentLists
+  }
 }
 
 function deleteList(state, action) {
   const id = action.payload;
-  let currentLists = state.lists.filter(list => {
+  let newLists = state.lists.filter(list => {
     return list.id !== id;
   });
 
   return {
     ...state,
-    lists: currentLists,
+    lists: newLists
   }
-  
+
 }

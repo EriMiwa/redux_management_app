@@ -14,10 +14,16 @@ export default class DeleteDialog extends React.Component{
         open: false
     }
 
+    handleDelete = () => {
+        const id = this.props.list.id
+        this.props.onDeleteList(id);
+        this.setState({open: false})
+    }
+
     render() {
 
         const { open } = this.state;
-        const { onDeleteList, list, id } = this.props;
+        const { list } = this.props;
 
 
         const handleClickOpen = () => {
@@ -27,13 +33,6 @@ export default class DeleteDialog extends React.Component{
         const handleClose = () => {
             this.setState({open: false})
         };
-    
-        const handleDelete = (id) => {
-            onDeleteList(id);
-            console.log('deleted', list.id);
-            // getLists();
-            this.setState({open: false})
-        }
 
         return (
             <div>
@@ -68,7 +67,7 @@ export default class DeleteDialog extends React.Component{
                 </DialogContentText>
                 </DialogContent>
                 <DialogActions>
-                <Button onClick={handleDelete} color="primary">
+                <Button onClick={this.handleDelete} color="primary">
                     Delete
                 </Button>
                 <Button onClick={handleClose} color="primary" autoFocus>

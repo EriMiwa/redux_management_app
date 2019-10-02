@@ -8,7 +8,6 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import IconButton from "@material-ui/core/IconButton";
 import DeleteIcon from "@material-ui/icons/Delete";
 
-// export default function DeleteDialog() {
 export default class DeleteDialog extends React.Component{
     state = {
         open: false

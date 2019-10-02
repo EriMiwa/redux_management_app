@@ -7,7 +7,6 @@ export function getLists() {
   return function(dispatch) {
     dispatch({
       type: GET_LISTS,
-      // payload: lists
     })
   }
 }

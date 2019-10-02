@@ -16,7 +16,6 @@ export default class AddDialog extends React.Component {
         stateValue: "",
         urlValue: "",
         createdDateValue: "",
-        updatedDateValue: ""
     }
 
     render() {
@@ -52,24 +51,16 @@ export default class AddDialog extends React.Component {
         const handleUrlInputValue = (e) => {
             this.setState({urlValue: e.target.value});
         }
-        //created date
-        const handleCreatedDateInputValue = (e) => {
-            this.setState({createdDateValue: e.target.value});
-        }
-        //updated date
-        const handleUpdateDateInputValue = (e) => {
-            this.setState({updatedDateValue: e.target.value});
-        }
 
         const handleAddList = (e) => {
             e.preventDefault();
+            const newCreatedDate = new Date().toISOString()
             const newIssue = {
                 id: this.state.idValue,
                 title: this.state.titleValue,
                 state: this.state.stateValue,
                 url: this.state.urlValue,
-                createdDate: this.state.createdDateValue,
-                updatedDate: this.state.updatedDateValue
+                createdDate: newCreatedDate
             }
 
             this.props.handleInputValue(newIssue);
@@ -79,8 +70,7 @@ export default class AddDialog extends React.Component {
                 titleValue: "",
                 stateValue: "",
                 urlValue: "",
-                createdDateValue: "",
-                updatedDateValue: ""
+                createdDateValue: ""
             })
 
             handleClickClose();
@@ -138,26 +128,6 @@ export default class AddDialog extends React.Component {
                         fullWidth
                         value={this.state.urlValue}
                         onChange={handleUrlInputValue}
-                    />
-                    <TextField
-                        autoFocus
-                        margin="dense"
-                        id="createdDate"
-                        label="Created at"
-                        type="text"
-                        fullWidth
-                        value={this.state.createdDateValue}
-                        onChange={handleCreatedDateInputValue}
-                    />
-                    <TextField
-                        autoFocus
-                        margin="dense"
-                        id="updatedDate"
-                        label="Updated at"
-                        type="text"
-                        fullWidth
-                        value={this.state.updateDateValue}
-                        onChange={handleUpdateDateInputValue}
                     />
                 </DialogContent>
                 <DialogActions>

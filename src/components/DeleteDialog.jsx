@@ -23,8 +23,7 @@ export default class DeleteDialog extends React.Component{
 
         const { open } = this.state;
         const { list } = this.props;
-
-
+        
         const handleClickOpen = () => {
             this.setState({open: true})
         };

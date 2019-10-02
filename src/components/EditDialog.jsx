@@ -11,12 +11,12 @@ import CreateIcon from "@material-ui/icons/Create";
 export default class EditDialog extends React.Component{
     state = {
         open: false,
-        idValue: "",
-        titleValue: "",
-        stateValue: "",
-        urlValue: "",
-        createdDateValue: "",
-        updatedDateValue: ""
+        idValue: this.props.list.id,
+        titleValue: this.props.list.title,
+        stateValue: this.props.list.state,
+        urlValue: this.props.list.url,
+        createdDateValue: this.props.list.createdDate,
+        updatedDateValue: this.props.list.updatedDate
     }
 
     render() {
@@ -54,39 +54,21 @@ export default class EditDialog extends React.Component{
             this.setState({urlValue: e.target.value});
             console.log(this.state.urlValue)
         }
-        //created date
-        const handleCreatedDateInputValue = (e) => {
-            this.setState({createdDateValue: e.target.value});
-            console.log(this.state.createdDateValue)
-        }
-        //updated date
-        const handleUpdateDateInputValue = (e) => {
-            this.setState({updatedDateValue: e.target.value});
-            console.log(this.state.updatedDateValue)
-        }
 
         const handleEditList = (e) => {
             e.preventDefault();
+            const newUpdatedDate = new Date().toISOString()
             const editedIssue = {
                 id: this.state.idValue,
                 title: this.state.titleValue,
                 state: this.state.stateValue,
                 url: this.state.urlValue,
                 createdDate: this.state.createdDateValue,
-                updatedDate: this.state.updatedDateValue
+                updatedDate: newUpdatedDate
             }
 
             const id = this.props.list.id;
             this.props.onEditList(editedIssue,id);
-            
-            this.setState({
-                idValue: "",
-                titleValue: "",
-                stateValue: "",
-                urlValue: "",
-                createdDateValue: "",
-                updatedDateValue: ""
-            })
     
             handleClickClose();
         }
@@ -148,26 +130,6 @@ export default class EditDialog extends React.Component{
                         fullWidth
                         defaultValue={list.url}
                         onChange={handleUrlInputValue}
-                    />
-                    <TextField
-                        autoFocus
-                        margin="dense"
-                        id="createdDate"
-                        label="Created at"
-                        type="text"
-                        fullWidth
-                        defaultValue={list.createdDate}
-                        onChange={handleCreatedDateInputValue}
-                    />
-                    <TextField
-                        autoFocus
-                        margin="dense"
-                        id="updatedDate"
-                        label="Updated at"
-                        type="text"
-                        fullWidth
-                        defaultValue={list.updatedDate}
-                        onChange={handleUpdateDateInputValue}
                     />
                 </DialogContent>
                 <DialogActions>

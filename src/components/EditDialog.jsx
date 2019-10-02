@@ -78,7 +78,7 @@ export default class EditDialog extends React.Component{
 
             const id = this.props.list.id;
             this.props.onEditList(editedIssue,id);
-
+            
             this.setState({
                 idValue: "",
                 titleValue: "",

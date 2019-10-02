@@ -4,7 +4,9 @@ import ListTable from './ListTable';
 
 class Page extends React.Component {
 
+
     render() {
+
         const { addList, editList, deleteList, lists } = this.props;
         return (
             <div>

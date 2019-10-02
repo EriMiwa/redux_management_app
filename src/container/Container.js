@@ -4,22 +4,21 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { getLists, addList, editList, deleteList} from '../actions/lists'
 
-class Container extends React.Component {
-  render() {
-    const { lists, editList, addList, getLists, deleteList } = this.props;
-    return (
-      <Page
-        lists={lists}
-        editList={editList}
-        addList={addList}
-        deleteList={deleteList}
-      />
-    )
-  }
+function Container(props) {
+
+  return (
+    <Page
+      lists={props.lists}
+      editList={props.editList}
+      addList={props.addList}
+      deleteList={props.deleteList}
+    />
+  )
 }
 
 //Getter: gets the state from store => converts to props in this component
 function mapStateToProps(state) {
+  console.log('state', state.listFile.lists);
   return {
     lists: state.listFile.lists,
   }

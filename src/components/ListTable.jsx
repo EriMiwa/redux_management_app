@@ -12,7 +12,7 @@ import EditDialog from './EditDialog';
 export default class ListTable extends React.Component {
 
     state = {
-        open: false
+        open: false,
     }
 
     render() {

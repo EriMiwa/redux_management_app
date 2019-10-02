@@ -46,9 +46,9 @@ function editList(state, action) {
   const targetIndex = state.lists.findIndex((list) => {
     return list.id === editedDataId
   });
-  let currentLists = state.lists;
+  let currentLists = [...state.lists];
   currentLists[targetIndex] = editedData;
-
+  
   return {
     ...state,
     lists: currentLists

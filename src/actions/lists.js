@@ -11,6 +11,7 @@ export function getLists() {
   }
 }
 
+
 export function addList(newPost) {
   return function(dispatch) {
     dispatch({
